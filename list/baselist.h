@@ -11,10 +11,11 @@ public:
 	virtual void replace(int, int) = 0;
 	virtual void insert(int, int) = 0;
 	virtual void remove(int) = 0;
-	virtual void print() const = 0;
+	virtual void print() = 0;
 	virtual bool listFull() = 0;
 	virtual bool listEmpty() = 0;
 	void setMaxSize(int);
+	int getLength();
 	baselist();
 	~baselist();
 

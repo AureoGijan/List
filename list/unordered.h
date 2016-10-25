@@ -14,7 +14,7 @@ public:
 	void search(int);
 	void replace(int, int);
 	void remove(int);
-	void print() const;
+	void print();
 	void insert(int, int);
 	bool listFull();
 	bool listEmpty();

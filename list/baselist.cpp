@@ -17,3 +17,8 @@ baselist::~baselist()
 
 }
 
+int baselist::getLength()
+{
+	return length;
+}
+

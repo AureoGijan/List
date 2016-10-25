@@ -48,6 +48,11 @@ void unordered::createList() //initialization of the array list
 void unordered::search(int query) 
 {
 	bool found = false;
+	if (listEmpty() == true)
+	{
+		std::cout << "Error: The list is empty.\n" << std::endl;
+		return;
+	}
 	for (int i = 0; i < maxSize; i++)
 	{
 		if (query == item[i])
@@ -62,21 +67,36 @@ void unordered::search(int query)
 		std::cout << "No match found!\n" << std::endl;
 }
 
-void unordered::replace(int loc, int replacement) //replace data at a gevin position
+void unordered::replace(int loc, int replacement) //replace data at a given position
 {
+	if (listEmpty() == true)
+	{
+		std::cout << "Error: The list is empty.\n" << std::endl;
+		return;
+	}
 	item[loc-1] = replacement;
 	std::cout << "List replaced!\n" << std::endl;
 }
 
 void unordered::remove(int loc) //remove data at a given position
 {
+	if (listEmpty() == true)
+	{
+		std::cout << "Error: The list is empty.\n" << std::endl;
+		return;
+	}
 	item[loc-1] = 0;
 	std::cout << "Item removed!\n" << std::endl;
 	length--;
 }
 
-void unordered::print() const 
+void unordered::print() 
 {
+	if (listEmpty() == true)
+	{
+		std::cout << "Error: The list is empty.\n" << std::endl;
+		return;
+	}
 	std::cout << "**********    List    *********** " << std::endl;
 	for (int i = 0; i < length; i++)
 	{
@@ -87,6 +107,11 @@ void unordered::print() const
 
 void unordered::write() //feed data to array, each data input adds 1 value to protected variable length
 {
+	if (listFull() == true)
+	{
+		std::cout << "Error: The list is full!\n" << std::endl;
+		return;
+	}
 	std::cout << "Please enter data" << std::endl;
 	std::cin >> item[length];
 	length++;
@@ -97,10 +122,24 @@ void unordered::write() //feed data to array, each data input adds 1 value to pr
 void unordered::insert(int loc, int insertData) //insert data to a specified location and move the succeeding data to higher indeces.
 {
 	int i = loc - 1;
+	if (listEmpty() == true)
+
+	{
+		std::cout << "Error: The list is empty.\n" << std::endl;
+		return;
+	}
+
+	if (listFull() == true)
+	{
+		std::cout << "Error: The list is full!\n" << std::endl;
+		return;
+	}
+
 	for (i; i < maxSize; i++)
 	{
 		item[i + 1] = item[i];
 	}
+
 	item[loc] = insertData;
 	std::cout << " Insert Data succesfull!\n" << std::endl;
 }
