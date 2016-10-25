@@ -42,12 +42,32 @@ int main()
 		switch (choice)
 		{
 		case 'w':
+			if (newList.listFull() == true)
+			{
+				cout << "Error: The list is full!\n" << endl;
+				break;
+			}
 			newList.write();
 			break;
 		case 'p':
+			if (newList.listEmpty() == true)
+			{
+				std::cout << "Error: The list is empty.\n" << std::endl;
+				break;
+			}
 			newList.print();
 			break;
 		case 'i':
+			if (newList.listEmpty() == true)
+			{
+				std::cout << "Error: The list is empty.\n" << std::endl;
+				break;
+			}
+			if (newList.listFull() == true)
+			{
+				cout << "Error: The list is full!\n" << endl;
+				break;
+			}
 			cout << "enter index number: ";
 			cin >> index;
 			cout << endl;
@@ -58,6 +78,11 @@ int main()
 			newList.insert(index, newdata);
 			break;
 		case 'a':
+			if (newList.listEmpty() == true)
+			{
+				std::cout << "Error: The list is empty.\n" << std::endl;
+				break;
+			}
 			cout << "enter index number: ";
 			cin >> index;
 			cout << endl;
@@ -68,6 +93,11 @@ int main()
 			newList.replace(index, newdata);
 			break;
 		case 'b':
+			if (newList.listEmpty() == true)
+			{
+				std::cout << "Error: The list is empty.\n" << std::endl;
+				break;
+			}
 			cout << "enter index number: ";
 			cin >> index;
 			cout << endl;
@@ -77,6 +107,11 @@ int main()
 			writing = true;
 			break;
 		case 's':
+			if (newList.listEmpty() == true)
+			{
+				std::cout << "Error: The list is empty.\n" << std::endl;
+				break;
+			}
 			cout << "enter data: ";
 			cin >> newdata;
 			cout << endl;

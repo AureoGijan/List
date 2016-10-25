@@ -5,7 +5,6 @@ baselist::baselist()
 {
 	length = 0;
 	maxSize = 0;
-	std::cout << "*** BASE constructor is initialized ***" << std::endl; //test
 }
 
 void baselist::setMaxSize(int size)
@@ -15,6 +14,6 @@ void baselist::setMaxSize(int size)
 
 baselist::~baselist()
 {
-	std::cout << "*** BASE deconstructor is initialized ***" << std::endl; //test
+
 }
 

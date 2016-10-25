@@ -4,13 +4,12 @@
 unordered::unordered()
 	:baselist()
 {
-	std::cout << "*** DERIVED constructor is initialized ***" << std::endl; //test
+
 }
 
 unordered::~unordered()
 {
 	delete[] item;
-	std::cout << "*** DERIVED deconstructor is initialized ***" << std::endl; //test
 }
 
 bool unordered::listEmpty() //checks whether the list has no data
@@ -25,16 +24,18 @@ bool unordered::listEmpty() //checks whether the list has no data
 			dataFound++;
 		}
 	}
-
 	if (dataFound == 0)
-	{
 		return true;
-	}
+	else
+		return false;
 }
 
-bool unordered::listFull()
+bool unordered::listFull() //checks wether the list is full
 {
-
+	if (length == maxSize)
+		return true;
+	else
+		return false;		
 }
 
 void unordered::createList() //initialization of the array list
@@ -71,12 +72,13 @@ void unordered::remove(int loc) //remove data at a given position
 {
 	item[loc-1] = 0;
 	std::cout << "Item removed!\n" << std::endl;
+	length--;
 }
 
 void unordered::print() const 
 {
 	std::cout << "**********    List    *********** " << std::endl;
-	for (int i = 0; i < maxSize; i++)
+	for (int i = 0; i < length; i++)
 	{
 		std::cout << "#" << i + 1 << ": " << item[i] << std::endl;
 	}
