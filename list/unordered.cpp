@@ -17,17 +17,10 @@ bool unordered::listEmpty() //checks whether the list has no data
 	int dataFound = 0;
 	for (int i = 0; i < maxSize; i++)
 	{
-		if (item[i] == 0)
-		{ }
-		else
-		{
-			dataFound++;
-		}
+		if (item[i] != 0)
+			return false;
 	}
-	if (dataFound == 0)
-		return true;
-	else
-		return false;
+	return true;
 }
 
 bool unordered::listFull() //checks wether the list is full
@@ -80,14 +73,21 @@ void unordered::replace(int loc, int replacement) //replace data at a given posi
 
 void unordered::remove(int loc) //remove data at a given position
 {
+	int i = loc - 1;
 	if (listEmpty() == true)
 	{
 		std::cout << "Error: The list is empty.\n" << std::endl;
 		return;
 	}
-	item[loc-1] = 0;
+	item[i] = 0;
 	std::cout << "Item removed!\n" << std::endl;
 	length--;
+	while (i != length)
+	{
+		item[i] = item[i + 1];
+		i++;
+	}
+	
 }
 
 void unordered::print() 
@@ -97,6 +97,7 @@ void unordered::print()
 		std::cout << "Error: The list is empty.\n" << std::endl;
 		return;
 	}
+	std::cout << listEmpty() << std::endl;
 	std::cout << "**********    List    *********** " << std::endl;
 	for (int i = 0; i < length; i++)
 	{
@@ -122,6 +123,7 @@ void unordered::write() //feed data to array, each data input adds 1 value to pr
 void unordered::insert(int loc, int insertData) //insert data to a specified location and move the succeeding data to higher indeces.
 {
 	int i = loc - 1;
+	int maxlength = length;
 	if (listEmpty() == true)
 
 	{
@@ -135,11 +137,15 @@ void unordered::insert(int loc, int insertData) //insert data to a specified loc
 		return;
 	}
 
-	for (i; i < maxSize; i++)
+	while (maxlength != i)
 	{
-		item[i + 1] = item[i];
+		item[maxlength] = item[maxlength-1];
+		maxlength--;
+		//std::cout << " maxlength = " << maxlength << "i = " << i << std::endl;
 	}
 
-	item[loc] = insertData;
+	item[i] = insertData;
+	length++;
+
 	std::cout << " Insert Data succesfull!\n" << std::endl;
 }
